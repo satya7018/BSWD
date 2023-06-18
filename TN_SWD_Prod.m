@@ -1,0 +1,14 @@
+function y = TN_SWD_Prod(n,T,rho,p,l,u,mu,sgm)
+% rho = 0.1;
+% l = 0;
+% u = 1;
+% mu = 0.5;
+% sgm = sqrt(0.1);
+al = (l-mu)/sgm;
+bt = (u-mu)/sgm;
+x = (rho-mu)/sgm;
+%npdf = normpdf(x);
+Ncdf1 = normcdf(al);
+Ncdf2 = normcdf(bt);
+NTpdf = (1/sgm)*(normpdf(x)/(Ncdf2-Ncdf1));
+y = Optimal_SWD(n,T,rho,p)*NTpdf;
